@@ -1,7 +1,8 @@
 #include <iostream>
-using namespace std;
+using std::cout;
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv) 
+{
 	if (argc > 1)
 	{
 		if (argc >= 3)
