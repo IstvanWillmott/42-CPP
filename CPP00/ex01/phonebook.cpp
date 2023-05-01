@@ -2,6 +2,9 @@
 using std::string;
 using std::cout;
 using std::cin;
+using std::to_string;
+using std::stoi;
+using std::isdigit;
 
 class Contact
 {
@@ -62,7 +65,8 @@ class ADD
 			cout << "\nPhone number: ";
 			cin >> pnumber;
 			cout << "\nDarkest secret: ";
-			cin >> dsecret;
+			cin.ignore();
+			getline(cin, dsecret);
 			cout << "\n";
 		}
 };
@@ -73,15 +77,87 @@ class SEARCH
 		string fnameedit;
 		string lnameedit;
 		string nnameedit;
-		string pnumberedit;
+		string userinput;
+		int temp;
 		SEARCH(){};
 		SEARCH(PhoneBook phonebook)
 		{
+			userinput = "";
+			cout << "|     Index|First Name| Last Name|  Nickname|\n";
 			for (int i = 0; i < 7; i++)
 			{
-				fnameedit = phonebook.contacts[0].FirstName
-				cout << "|" + phonebook.contacts[0].FirstName + "|" + phonebook.contacts[0].LastName + "|" + phonebook.contacts[0].Nickname + "|" + phonebook.contacts[0].PhoneNumber + "|";
+				fnameedit = "";
+				lnameedit = "";
+				nnameedit = "";
+				if (phonebook.contacts[i].FirstName != "")
+				{
+					temp = phonebook.contacts[i].FirstName.length();
+					if (temp < 10)
+					{
+						for (int i = 0; i < 10 - temp; i++)
+							fnameedit += " ";
+						fnameedit += phonebook.contacts[i].FirstName;
+					}
+					else if (temp > 10)
+					{
+						fnameedit = phonebook.contacts[i].FirstName;
+						fnameedit.erase(9, temp - 9);
+						fnameedit += ".";
+					}
+					else
+						fnameedit = phonebook.contacts[i].FirstName;
+
+					temp = phonebook.contacts[i].LastName.length();
+
+					if (temp < 10)
+					{
+						for (int i = 0; i < 10 - temp; i++)
+							lnameedit += " ";
+						lnameedit += phonebook.contacts[i].LastName;
+					}
+					else if (temp > 10)
+					{
+						lnameedit = phonebook.contacts[i].LastName;
+						lnameedit.erase(9, temp - 9);
+						lnameedit += ".";
+					}
+					else
+						lnameedit = phonebook.contacts[i].LastName;
+
+					temp = phonebook.contacts[i].Nickname.length();
+
+					if (temp < 10)
+					{
+						for (int i = 0; i < 10 - temp; i++)
+							nnameedit += " ";
+						nnameedit += phonebook.contacts[i].Nickname;
+					}
+					else if (temp > 10)
+					{
+						nnameedit = phonebook.contacts[i].Nickname;
+						nnameedit.erase(9, temp - 9);
+						nnameedit += ".";
+					}
+					else
+						nnameedit = phonebook.contacts[i].Nickname;
+
+					cout << "|         " + to_string(i) + "|" + fnameedit + "|" + lnameedit + "|" + nnameedit + "|";
+					cout << "\n";
+				}
 			}
+			cin >> userinput;
+			char userinput : userinput;
+			if (isdigit(userinput)) && (stoi(userinput) >= 0) && (stoi(userinput) <= 7) && (phonebook.contacts[stoi(userinput)].FirstName != ""))
+			{
+				cout << "First name: " + phonebook.contacts[stoi(userinput)].FirstName;
+				cout << "\nLast name: " + phonebook.contacts[stoi(userinput)].LastName;
+				cout << "\nNick name: " + phonebook.contacts[stoi(userinput)].Nickname;
+				cout << "\nPhone number: " + phonebook.contacts[stoi(userinput)].PhoneNumber;
+				cout << "\nDarkest secret: " + phonebook.contacts[stoi(userinput)].DarkestSecret;
+				cout << "\n";
+			}
+			else
+				cout << "Index out of range or wrong, type available number displayed in index list above.\n";
 		}
 };
 
