@@ -1,5 +1,7 @@
 #include <iostream>
-using std::cout;
+#include <cstring>
+#include <locale>
+#include <stdio.h>
 
 int main(int argc, char **argv) 
 {
@@ -20,6 +22,6 @@ int main(int argc, char **argv)
 		}
 	}
 	else
-		cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";	
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";	
 	return 0;
 }

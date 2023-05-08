@@ -11,7 +11,7 @@ int main()
 		cin >> userinput;
 		if (userinput == "ADD")
 		{
-			ADD add;
+			Add add;
 			phonebook.contacts[curinput].FirstName = add.fname;
 			phonebook.contacts[curinput].LastName = add.lname;
 			phonebook.contacts[curinput].Nickname = add.nname;
@@ -24,7 +24,7 @@ int main()
 		}
 		else if (userinput == "SEARCH")
 		{
-			SEARCH search(phonebook);
+			Search search(phonebook);
 			
 		}
 		else if (userinput == "EXIT")

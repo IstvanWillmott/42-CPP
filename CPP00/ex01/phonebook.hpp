@@ -1,9 +1,7 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-
 # include <iostream>
-# include <string>
 using std::string;
 using std::cout;
 using std::cin;
@@ -51,7 +49,7 @@ class PhoneBook
 		}
 };
 
-class ADD
+class Add
 {
 	public:
 		string fname;
@@ -59,7 +57,7 @@ class ADD
 		string nname;
 		string pnumber;
 		string dsecret;
-		ADD()
+		Add()
 		{
 			cout << "First name: ";
 			cin >> fname;
@@ -76,7 +74,7 @@ class ADD
 		}
 };
 
-class SEARCH
+class Search
 {
 	public:
 		string fnameedit;
@@ -84,8 +82,8 @@ class SEARCH
 		string nnameedit;
 		string userinput;
 		int temp;
-		SEARCH(){};
-		SEARCH(PhoneBook phonebook)
+		Search(){};
+		Search(PhoneBook phonebook)
 		{
 			userinput = "";
 			cout << "|     Index|First Name| Last Name|  Nickname|\n";
